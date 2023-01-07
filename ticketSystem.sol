@@ -11,7 +11,7 @@ contract ticketSystem {
     enum guestListStatus { open, close }
     guestListStatus currentStatus;
 
-    mapping(uint => address) public guestList;
+    mapping(address => uint) public guestList;
 
     modifier ownerOnly {
         require(msg.sender == owner, "Authorization required");
@@ -47,7 +47,7 @@ contract ticketSystem {
 
     function bookTicket() external payable ifGuestListNotFull cost(5 ether) {
         count++;
-        guestList[count] = msg.sender;
+        guestList[msg.sender] = count;
         payable(owner).transfer(msg.value);
     }
 
