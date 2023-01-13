@@ -1,5 +1,7 @@
 pragma solidity ^0.8.1;
 
+//A guestlist creation and management software that bases data on the ethereum mainnet
+
 contract ticketSystem {
     
     uint count=0;
